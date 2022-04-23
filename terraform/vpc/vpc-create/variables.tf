@@ -3,6 +3,7 @@ locals {
   REGION       = local.config.REGION
   SERVICE_NAME = local.config.SERVICE_NAME
   ACCOUNT_ID   = data.aws_caller_identity.current.account_id
+  KEY_NAME     = local.config.KEY_NAME
 }
 
 # User 정보 호출

@@ -3,3 +3,5 @@ SERVICE_NAME:
   Simple-IaC-vpc
 REGION:
   ap-northeast-2
+KEY_NAME:
+  Simple-IaC-vpc-private-key
