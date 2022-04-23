@@ -24,3 +24,13 @@ override.tf.json
 # Include override files you do wish to add to version control using negated pattern
 #
 # !example_override.tf
+
+# terraform build file
+*.lock.hcl
+.terraform/
+
+# jetbrains ide settings file
+.idea
+
+
+.env
