@@ -6,10 +6,6 @@ resource "tls_private_key" "vpc-create-tls-key" {
 resource "aws_key_pair" "vpc-create-generated-key" {
   key_name   = local.KEY_NAME
   public_key = tls_private_key.vpc-create-tls-key.public_key_openssh
-
-  provisioner "local-exec" {
-    command = "echo '${tls_private_key.vpc-create-tls-key.private_key_pem}' > ./${local.KEY_NAME}.pem"
-  }
 }
 
 resource "local_file" "vpc-create-pem-file" {
