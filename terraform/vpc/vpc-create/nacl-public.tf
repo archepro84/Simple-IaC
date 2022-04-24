@@ -28,6 +28,7 @@ resource "aws_network_acl_rule" "vpc-create-public-nacl-egress-all" {
   cidr_block     = "0.0.0.0/0"
 }
 
-resource "aws_default_network_acl" "vpc-create-default-nacl" {
-  default_network_acl_id = aws_network_acl.vpc-create-public-nacl.id
+resource "aws_network_acl_association" "vpc-create-public-nacl-association" {
+  network_acl_id = aws_network_acl.vpc-create-public-nacl.id
+  subnet_id = aws_subnet.vpc-create-public-subnet.id
 }
