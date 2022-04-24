@@ -6,7 +6,7 @@ resource "aws_vpc" "vpc-create-main" {
   }
 }
 
-resource "aws_internet_gateway" "vpc-create-ig" {
+resource "aws_internet_gateway" "vpc-create-igw" {
   vpc_id = aws_vpc.vpc-create-main.id
 
   tags = {

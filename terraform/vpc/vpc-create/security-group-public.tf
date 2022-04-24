@@ -40,7 +40,6 @@ resource "aws_security_group_rule" "vpc-create-public-security-group-rule-egress
   security_group_id = aws_security_group.vpc-create-public-security-group.id
 }
 
-
 resource "aws_network_interface" "vpc-create-public-ec2-ni" {
   subnet_id       = aws_subnet.vpc-create-public-subnet.id
   security_groups = [aws_security_group.vpc-create-public-security-group.id]
