@@ -22,7 +22,3 @@ resource "aws_route_table_association" "vpc-create-public-route-table-associatio
   subnet_id      = aws_subnet.vpc-create-public-subnet.id
   route_table_id = aws_route_table.vpc-create-public-rtb.id
 }
-
-resource "aws_default_route_table" "cpv-create-default-rt" {
-  default_route_table_id = aws_vpc.vpc-create-main.default_route_table_id
-}
