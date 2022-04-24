@@ -9,7 +9,7 @@ resource "aws_security_group_rule" "vpc-create-public-security-group-rule-ssh" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks       = [aws_vpc.vpc-create-main.cidr_block]
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.vpc-create-public-security-group.id
 }
 
@@ -18,7 +18,7 @@ resource "aws_security_group_rule" "vpc-create-public-security-group-rule-http" 
   from_port         = 80
   to_port           = 80
   protocol          = "tcp"
-  cidr_blocks       = [aws_vpc.vpc-create-main.cidr_block]
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.vpc-create-public-security-group.id
 }
 
@@ -27,12 +27,22 @@ resource "aws_security_group_rule" "vpc-create-public-security-group-rule-https"
   from_port         = 443
   to_port           = 443
   protocol          = "tcp"
-  cidr_blocks       = [aws_vpc.vpc-create-main.cidr_block]
+  cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = aws_security_group.vpc-create-public-security-group.id
 }
 
+resource "aws_security_group_rule" "vpc-create-public-security-group-rule-egress-all" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.vpc-create-public-security-group.id
+}
+
+
 resource "aws_network_interface" "vpc-create-public-ec2-ni" {
-  subnet_id = aws_subnet.vpc-create-public-subnet.id
+  subnet_id       = aws_subnet.vpc-create-public-subnet.id
   security_groups = [aws_security_group.vpc-create-public-security-group.id]
 
   tags = {
