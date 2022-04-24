@@ -2,6 +2,7 @@ resource "aws_instance" "vpc-create-private-ec2" {
   ami           = "ami-0ed11f3863410c386" # ubuntu 18.04 amd64
   instance_type = "t2.nano"
   key_name = aws_key_pair.vpc-create-generated-key.key_name
+  availability_zone = aws_subnet.vpc-create-private-subnet.availability_zone
 
   network_interface {
     device_index         = 0
