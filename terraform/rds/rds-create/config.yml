@@ -1,0 +1,11 @@
+---
+SERVICE_NAME:
+  Simple-IaC-rds
+REGION:
+  ap-northeast-2
+KEY_NAME:
+  Simple-IaC-rds-private-key
+DB_USER_NAME:
+  Archepro84
+DB_USER_PASS: # FIXME remove password
+  888444***$$$
