@@ -13,8 +13,18 @@ resource "aws_db_parameter_group" "rds-create-parameter-group" {
   }
 }
 
+resource "aws_db_subnet_group" "rds-create-db-subnet-group" {
+  name       = "rds-create-db-subnet-group"
+  subnet_ids = [aws_subnet.rds-create-subnet.id, aws_subnet.rds-create-subnet-b.id]
+
+
+  tags = {
+    Name = "rds-create-db-subnet-group tags name"
+  }
+}
+
 resource "aws_db_instance" "rds-create-rds" {
-  name = "rds-create-rds"
+  name = "TerraformRdsCreateRds"
 
   engine         = "mysql"
   engine_version = "5.7"
@@ -28,9 +38,11 @@ resource "aws_db_instance" "rds-create-rds" {
 
   parameter_group_name = aws_db_parameter_group.rds-create-parameter-group.id
   skip_final_snapshot  = true
-  availability_zone    = "${local.REGION}a"
+  publicly_accessible  = true
+  availability_zone    = "${local.REGION}b"
 
-  security_group_names = [aws_security_group.rds-create-security-group.id]
+  vpc_security_group_ids = [aws_security_group.rds-create-security-group.id]
+  db_subnet_group_name   = aws_db_subnet_group.rds-create-db-subnet-group.id
 
   tags = {
     Name = "rds-create-rds"
