@@ -19,7 +19,7 @@ resource "aws_security_group_rule" "rds-create-security-group-rule-self" {
   from_port         = 0
   to_port           = 0
   protocol          = "-1"
-  cidr_blocks       = [aws_security_group.rds-create-security-group.id]
+  self              = true
   security_group_id = aws_security_group.rds-create-security-group.id
 }
 
