@@ -1,0 +1,7 @@
+---
+SERVICE_NAME:
+  Simple-IaC-ec2-elb
+REGION:
+  ap-northeast-2
+KEY_NAME:
+  Simple-IaC-ec2-elb-private-key
