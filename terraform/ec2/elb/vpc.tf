@@ -1,4 +1,4 @@
-resource "aws_vpc" "vpc-create-main" {
+resource "aws_vpc" "elb-main" {
   cidr_block = "10.2.0.0/16"
 
   tags = {
@@ -6,8 +6,8 @@ resource "aws_vpc" "vpc-create-main" {
   }
 }
 
-resource "aws_internet_gateway" "vpc-create-igw" {
-  vpc_id = aws_vpc.vpc-create-main.id
+resource "aws_internet_gateway" "elb-igw" {
+  vpc_id = aws_vpc.elb-main.id
 
   tags = {
     Name = "${local.SERVICE_NAME}-igw"
