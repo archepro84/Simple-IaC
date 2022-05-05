@@ -1,4 +1,4 @@
-resource "aws_network_acl_rule" "elb-nacl-ingress-all" {
+resource "aws_network_acl_rule" "elb-nacl-one-ingress-all" {
   network_acl_id = aws_vpc.elb-main.default_network_acl_id
   rule_number    = 100
   rule_action    = "allow"
@@ -9,7 +9,7 @@ resource "aws_network_acl_rule" "elb-nacl-ingress-all" {
   cidr_block     = "0.0.0.0/0"
 }
 
-resource "aws_network_acl_rule" "elb-nacl-egress-all" {
+resource "aws_network_acl_rule" "elb-nacl-one-egress-all" {
   network_acl_id = aws_vpc.elb-main.default_network_acl_id
   rule_number    = 100
   rule_action    = "allow"
@@ -20,7 +20,7 @@ resource "aws_network_acl_rule" "elb-nacl-egress-all" {
   cidr_block     = "0.0.0.0/0"
 }
 
-resource "aws_network_acl_association" "elb-nacl-association" {
+resource "aws_network_acl_association" "elb-nacl-one-association" {
   network_acl_id = aws_vpc.elb-main.default_network_acl_id
-  subnet_id = aws_subnet.elb-subnet.id
+  subnet_id = aws_subnet.elb-subnet-one.id
 }
