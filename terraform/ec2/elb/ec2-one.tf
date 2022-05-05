@@ -6,6 +6,6 @@ resource "aws_instance" "elb-ec2-one" {
 
   network_interface {
     device_index         = 0
-    network_interface_id = aws_network_interface.elb-ec2-ni.id
+    network_interface_id = aws_network_interface.elb-ec2-one-ni.id
   }
 }

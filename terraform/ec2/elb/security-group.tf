@@ -40,11 +40,20 @@ resource "aws_security_group_rule" "elb-security-group-rule-egress-all" {
   security_group_id = aws_security_group.elb-security-group.id
 }
 
-resource "aws_network_interface" "elb-ec2-ni" {
+resource "aws_network_interface" "elb-ec2-one-ni" {
   subnet_id       = aws_subnet.elb-subnet.id
   security_groups = [aws_security_group.elb-security-group.id]
 
   tags = {
-    Name = "${local.SERVICE_NAME}-ec2-ni"
+    Name = "${local.SERVICE_NAME}-ec2-one-ni"
+  }
+}
+
+resource "aws_network_interface" "elb-ec2-two-ni" {
+  subnet_id       = aws_subnet.elb-subnet.id
+  security_groups = [aws_security_group.elb-security-group.id]
+
+  tags = {
+    Name = "${local.SERVICE_NAME}-ec2-two-ni"
   }
 }
