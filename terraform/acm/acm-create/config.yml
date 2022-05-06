@@ -1,0 +1,11 @@
+---
+SERVICE_NAME:
+  Simple-IaC-acm-create
+REGION:
+  ap-northeast-2
+KEY_NAME:
+  Simple-IaC-acm-create-private-key
+SERVER_PORT:
+  8484
+ROUTE53_URI:
+  astelen.com
