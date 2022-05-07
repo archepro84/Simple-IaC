@@ -31,6 +31,15 @@ resource "aws_security_group_rule" "elb-security-group-rule-https-two" {
   security_group_id = aws_security_group.elb-security-group-two.id
 }
 
+resource "aws_security_group_rule" "elb-security-group-rule-server-two" {
+  type              = "ingress"
+  from_port         = local.SERVER_PORT
+  to_port           = local.SERVER_PORT
+  protocol          = "tcp"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = aws_security_group.elb-security-group-two.id
+}
+
 resource "aws_security_group_rule" "elb-security-group-rule-egress-all-two" {
   type              = "egress"
   from_port         = 0
