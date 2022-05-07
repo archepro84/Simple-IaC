@@ -5,7 +5,9 @@ REGION:
   ap-northeast-2
 KEY_NAME:
   Simple-IaC-elb-private-key
-SERVER_PORT:
-  8484
 ROUTE53_URI:
   astelen.com
+TARGET_GROUP_PORT:
+  2000
+SERVER_PORT:
+  3000

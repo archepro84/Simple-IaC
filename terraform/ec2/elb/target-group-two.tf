@@ -1,6 +1,6 @@
 resource "aws_lb_target_group" "elb-target-group-two" {
   name     = "${local.SERVICE_NAME}-target-group-two"
-  port     = local.SERVER_PORT
+  port     = local.TARGET_GROUP_PORT
   protocol = "HTTP"
   vpc_id   = aws_vpc.elb-main.id
 }
