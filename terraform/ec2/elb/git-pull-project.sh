@@ -1,6 +1,7 @@
+#! /bin/bash
+
 # Update linux apt package manager
 sudo apt-get update
-
 
 # install curl, git
 sudo apt-get install curl git -y
@@ -24,7 +25,7 @@ git clone -b Simple-IaC --single-branch https://github.com/archepro84/prac-ORM.g
 # directory move
 cd prac-ORM/typeorm
 
-# project instal
+# project install
 npm install
 
 # Start node project
