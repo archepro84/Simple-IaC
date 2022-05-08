@@ -1,0 +1,9 @@
+---
+SERVICE_NAME:
+  Simple-IaC-ec2-create
+REGION:
+  ap-northeast-2
+KEY_NAME:
+  Simple-IaC-ec2-create-private-key
+SERVER_PORT:
+  3000
