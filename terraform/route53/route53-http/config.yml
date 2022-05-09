@@ -1,0 +1,11 @@
+---
+SERVICE_NAME:
+  Simple-IaC-route53-http
+REGION:
+  ap-northeast-2
+KEY_NAME:
+  Simple-IaC-route53-http-private-key
+SERVER_PORT:
+  2000
+ROUTE53_URI:
+  astelen.com
