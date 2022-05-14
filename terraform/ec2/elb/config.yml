@@ -6,7 +6,7 @@ REGION:
 KEY_NAME:
   Simple-IaC-elb-private-key
 ROUTE53_URI:
-  astelen.com
+  astraiosis.com
 TARGET_GROUP_PORT:
   2000
 SERVER_PORT:
