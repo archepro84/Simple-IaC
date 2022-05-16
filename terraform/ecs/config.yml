@@ -1,0 +1,9 @@
+---
+SERVICE_NAME:
+  Simple-IaC-ecs
+REGION:
+  ap-northeast-2
+KEY_NAME:
+  Simple-IaC-ecs-private-key
+SERVER_PORT:
+  3000
