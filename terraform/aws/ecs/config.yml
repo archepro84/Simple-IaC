@@ -7,3 +7,5 @@ KEY_NAME:
   Simple-IaC-ecs-private-key
 SERVER_PORT:
   3000
+DOCKER_IMAGE_URI:
+  ${{ secrets.DOCKER_IMAGE_URI }}

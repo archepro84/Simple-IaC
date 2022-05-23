@@ -5,6 +5,7 @@ locals {
   KEY_NAME     = local.config.KEY_NAME
   SERVER_PORT  = local.config.SERVER_PORT
   ROUTE53_URI  = local.config.ROUTE53_URI
+  DOCKER_IMAGE_URI = local.config.DOCKER_IMAGE_URI
 
   ACCOUNT_ID = data.aws_caller_identity.current.account_id
 }
