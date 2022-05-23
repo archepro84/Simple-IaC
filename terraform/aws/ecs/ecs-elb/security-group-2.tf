@@ -8,6 +8,15 @@ resource "aws_security_group" "ecs-elb-security-group-2" {
   }
 }
 
+resource "aws_security_group_rule" "ecs-elb-security-group-inbound-rules-sg-1-2" {
+  type                     = "ingress"
+  from_port                = 1
+  to_port                  = 65535
+  protocol                 = "tcp"
+  source_security_group_id = aws_security_group.ecs-elb-security-group-1.id
+  security_group_id        = aws_security_group.ecs-elb-security-group-2.id
+}
+
 resource "aws_security_group_rule" "ecs-elb-security-group-inbound-rules-server-2" {
   type              = "ingress"
   from_port         = local.SERVER_PORT
