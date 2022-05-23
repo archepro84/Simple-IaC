@@ -1,10 +1,10 @@
 ---
 SERVICE_NAME:
-  Simple-IaC-ecs
+  Simple-IaC-ecs-elb
 REGION:
   ap-northeast-2
 KEY_NAME:
-  Simple-IaC-ecs-private-key
+  Simple-IaC-ecs-elb-private-key
 SERVER_PORT:
   3000
 DOCKER_IMAGE_URI:
