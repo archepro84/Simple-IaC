@@ -1,10 +1,12 @@
 resource "aws_ecs_task_definition" "ecs-elb-ecs-task-definition" {
   family                = "service"
+  #  requires_compatibilities = ["FARGATE"]
+  #  network_mode             = "awsvpc"
   container_definitions = jsonencode([
     {
-      name         = "express-one"
-      image        = "service-one"
-      cpu          = 256
+      name         = "${local.SERVICE_NAME}-cluster"
+      image        = local.DOCKER_IMAGE_URI
+      cpu          = 10
       memory       = 256
       essential    = true
       portMappings = [
@@ -16,10 +18,10 @@ resource "aws_ecs_task_definition" "ecs-elb-ecs-task-definition" {
     },
   ])
 
-  volume {
-    name      = "service-storage"
-    host_path = "/ecs/service-storage"
-  }
+  #  volume {
+  #    name      = "service-storage"
+  #    host_path = "/ecs/service-storage"
+  #  }
 
   placement_constraints {
     type       = "memberOf"
@@ -32,6 +34,7 @@ resource "aws_ecs_cluster" "ecs-elb-ecs-cluster" {
 }
 
 resource "aws_ecs_service" "ecs-elb-ecs-service" {
-  name    = "${local.SERVICE_NAME}-esc-service"
-  cluster = aws_ecs_cluster.ecs-elb-ecs-cluster.id
+  name            = "${local.SERVICE_NAME}-esc-service"
+  cluster         = aws_ecs_cluster.ecs-elb-ecs-cluster.id
+  task_definition = aws_ecs_task_definition.ecs-elb-ecs-task-definition.arn
 }
