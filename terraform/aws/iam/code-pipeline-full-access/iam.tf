@@ -1,7 +1,34 @@
-resource "aws_iam_role" "master-commit-iam-role" {
-  name = "master-commit-iam-role-default-codepipeline-role"
+resource "aws_iam_role" "code-pipeline-full-access-iam-role" {
+  name = "${local.SERVICE_NAME}-iam-role-codepipeline-role"
 
   assume_role_policy = <<EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "",
+            "Effect": "Allow",
+            "Principal": {
+                "Service": [
+                    "codecommit.amazonaws.com",
+                    "codebuild.amazonaws.com",
+                    "codedeploy.amazonaws.com",
+                    "codepipeline.amazonaws.com"
+                ]
+            },
+            "Action": [
+                "sts:AssumeRole"
+            ]
+        }
+    ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy" "code-pipeline-full-access-iam-role-policy" {
+  name   = "${local.SERVICE_NAME}-iam-role-policy"
+  role   = aws_iam_role.code-pipeline-full-access-iam-role.id
+  policy = <<EOF
 {
     "Statement": [
         {
@@ -161,5 +188,7 @@ resource "aws_iam_role" "master-commit-iam-role" {
 EOF
 }
 
-
-
+resource "aws_iam_instance_profile" "code-pipeline-full-access-iam-instance-profile" {
+  name = "${local.SERVICE_NAME}-iam-instance-profile"
+  role = aws_iam_role.code-pipeline-full-access-iam-role.name
+}
