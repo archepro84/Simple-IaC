@@ -1,7 +1,0 @@
----
-SERVICE_NAME:
-  Simple-IaC-master-commit
-REGION:
-  ap-northeast-2
-KEY_NAME:
-  Simple-IaC-master-commit-private-key

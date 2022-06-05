@@ -1,0 +1,7 @@
+---
+SERVICE_NAME:
+  Simple-IaC-code-pipeline-full-access
+REGION:
+  ap-northeast-2
+KEY_NAME:
+  Simple-IaC-code-pipeline-full-access-private-key
