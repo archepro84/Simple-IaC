@@ -73,7 +73,7 @@ resource "aws_iam_role_policy" "code-build-iam-role-policy-code-build" {
 EOF
 }
 
-resource "aws_iam_role_policy" "code-build-iam-role-policy-secrets-manager"{
+resource "aws_iam_role_policy" "code-build-iam-role-policy-secrets-manager" {
   name   = "${local.SERVICE_NAME}-iam-role-policy-secrets-manager"
   role   = aws_iam_role.code-build-iam-role.id
   policy = <<EOF
@@ -98,7 +98,40 @@ resource "aws_iam_role_policy" "code-build-iam-role-policy-secrets-manager"{
     ]
 }
 EOF
+}
 
+resource "aws_iam_role_policy" "code-build-iam-role-policy-ecr" {
+  name   = "${local.SERVICE_NAME}-iam-role-policy-ecr"
+  role   = aws_iam_role.code-build-iam-role.id
+  policy = <<EOF
+{
+    "Version": "2012-10-17",
+        "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecr:GetAuthorizationToken",
+                "ecr:BatchCheckLayerAvailability",
+                "ecr:GetDownloadUrlForLayer",
+                "ecr:GetRepositoryPolicy",
+                "ecr:DescribeRepositories",
+                "ecr:ListImages",
+                "ecr:DescribeImages",
+                "ecr:BatchGetImage",
+                "ecr:GetLifecyclePolicy",
+                "ecr:GetLifecyclePolicyPreview",
+                "ecr:ListTagsForResource",
+                "ecr:DescribeImageScanFindings",
+                "ecr:InitiateLayerUpload",
+                "ecr:UploadLayerPart",
+                "ecr:CompleteLayerUpload",
+                "ecr:PutImage"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+EOF
 }
 
 resource "aws_iam_instance_profile" "code-build-iam-instance-profile" {
