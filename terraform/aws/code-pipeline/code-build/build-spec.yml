@@ -1,0 +1,11 @@
+------
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - docker build -t include-nestjs-image ./docker/include-nestjs
+      - docker tag include-nestjs-image ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{secrets.AWS_REGION}}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}
+  post:build:
+    commands:
+      - docker push ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{secrets.AWS_REGION}}.amazonaws.com/${{ secrets.AWS_ECR_REPOSITORY }}

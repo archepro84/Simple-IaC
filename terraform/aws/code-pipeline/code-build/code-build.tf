@@ -15,6 +15,7 @@ resource "aws_codebuild_project" "code-build-codebuild-project" {
   }
 
   source {
+    buildspec       = "${path.module}/build-spec.yml"
     type            = "GITHUB"
     location        = "https://github.com/archepro84/prac-docker.git"
     git_clone_depth = 1
