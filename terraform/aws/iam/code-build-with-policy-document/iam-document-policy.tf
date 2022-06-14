@@ -59,6 +59,24 @@ data "aws_iam_policy_document" "code-build-with-policy-document-iam-policy-docum
   }
 }
 
+data "aws_iam_policy_document" "code-build-with-policy-document-iam-policy-document-secrets-manager" {
+  statement {
+    effect    = "Allow"
+    actions   = [
+      "secretsmanager:*",
+      "kms:DescribeKey",
+      "kms:ListAliases",
+      "kms:ListKeys",
+      "lambda:ListFunctions",
+      "rds:DescribeDBClusters",
+      "rds:DescribeDBInstances",
+      "redshift:DescribeClusters",
+      "tag:GetResources"
+    ]
+    resources = ["*"]
+  }
+}
+
 
 resource "aws_iam_policy" "code-build-with-policy-document-iam-policy-code-build-admin" {
   name   = "${local.SERVICE_NAME}-iam-policy-code-build-admin"
@@ -70,11 +88,21 @@ resource "aws_iam_policy" "code-build-with-policy-document-iam-policy-iam" {
   policy = data.aws_iam_policy_document.code-build-with-policy-document-iam-policy-document-iam.json
 }
 
-output "iam-policy-code-build-admin" {
-  value       = aws_iam_policy.code-build-with-policy-document-iam-policy-code-build-admin.policy
-  description = "iam policy policy with code build admin policy"
+resource "aws_iam_policy" "code-build-with-policy-document-iam-policy-secrets-manager" {
+  name   = "${local.SERVICE_NAME}-iam-policy-secrets-manager"
+  policy = data.aws_iam_policy_document.code-build-with-policy-document-iam-policy-document-secrets-manager.json
 }
-output "iam-policy-iam" {
-  value       = aws_iam_policy.code-build-with-policy-document-iam-policy-iam.policy
-  description = "iam policy policy with iam"
-}
+
+
+#output "iam-policy-code-build-admin" {
+#  value       = aws_iam_policy.code-build-with-policy-document-iam-policy-code-build-admin.policy
+#  description = "iam policy policy with code build admin policy"
+#}
+#output "iam-policy-iam" {
+#  value       = aws_iam_policy.code-build-with-policy-document-iam-policy-iam.policy
+#  description = "iam policy policy with iam"
+#}
+#output "iam-policy-secrets-manager" {
+#  value       = aws_iam_policy.code-build-with-policy-document-iam-policy-secrets-manager.policy
+#  description = "iam policy policy with secrets manager"
+#}
