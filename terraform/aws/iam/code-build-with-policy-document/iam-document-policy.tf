@@ -15,7 +15,6 @@ data "aws_iam_policy_document" "code-build-with-policy-document-iam-policy-docum
     ]
     resources = ["*"]
   }
-
 }
 
 data "aws_iam_policy_document" "code-build-with-policy-document-iam-policy-document-code-build-admin" {
@@ -58,11 +57,24 @@ data "aws_iam_policy_document" "code-build-with-policy-document-iam-policy-docum
     ]
     resources = ["arn:aws:logs:*:*:log-group:/aws/codebuild/*:log-stream:*"]
   }
-
 }
 
 
-#resource "aws_iam_policy" "code-build-with-policy-document-iam-policy" {
-#  name   = "${local.SERVICE_NAME}-iam-policy"
-#  policy = data.aws_iam_policy_document.code-build-with-policy-document-iam-policy-document.json
-#}
+resource "aws_iam_policy" "code-build-with-policy-document-iam-policy-code-build-admin" {
+  name   = "${local.SERVICE_NAME}-iam-policy-code-build-admin"
+  policy = data.aws_iam_policy_document.code-build-with-policy-document-iam-policy-document-code-build-admin.json
+}
+
+resource "aws_iam_policy" "code-build-with-policy-document-iam-policy-iam" {
+  name   = "${local.SERVICE_NAME}-iam-policy-iam"
+  policy = data.aws_iam_policy_document.code-build-with-policy-document-iam-policy-document-iam.json
+}
+
+output "iam-policy-code-build-admin" {
+  value       = aws_iam_policy.code-build-with-policy-document-iam-policy-code-build-admin.policy
+  description = "iam policy policy with code build admin policy"
+}
+output "iam-policy-iam" {
+  value       = aws_iam_policy.code-build-with-policy-document-iam-policy-iam.policy
+  description = "iam policy policy with iam"
+}
