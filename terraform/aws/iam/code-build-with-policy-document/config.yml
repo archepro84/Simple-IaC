@@ -1,0 +1,7 @@
+---
+SERVICE_NAME:
+  Simple-IaC-code-code-build-with-policy-document
+REGION:
+  ap-northeast-2
+KEY_NAME:
+  Simple-IaC-code-code-build-with-policy-document-private-key
