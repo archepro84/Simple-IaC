@@ -24,7 +24,8 @@ resource "aws_db_subnet_group" "rds-create-db-subnet-group" {
 }
 
 resource "aws_db_instance" "rds-create-rds" {
-  name = "TerraformRdsCreateRds"
+  name = "TerraformRdsCreateRDS"
+  identifier = "TerraformRdsCreateRDS"
 
   engine         = "mysql"
   engine_version = "5.7"
