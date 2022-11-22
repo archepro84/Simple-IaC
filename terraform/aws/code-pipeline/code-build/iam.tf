@@ -1,5 +1,5 @@
 resource "aws_iam_role" "code-build-iam-role" {
-  name = "${local.SERVICE_NAME}-iam-role"
+  name = "${var.service_name}-iam-role"
 
   assume_role_policy = <<EOF
 {
@@ -24,7 +24,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "code-build-iam-role-policy-code-build" {
-  name   = "${local.SERVICE_NAME}-iam-role-policy-code-build"
+  name   = "${var.service_name}-iam-role-policy-code-build"
   role   = aws_iam_role.code-build-iam-role.id
   policy = <<EOF
 {
@@ -74,7 +74,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "code-build-iam-role-policy-secrets-manager" {
-  name   = "${local.SERVICE_NAME}-iam-role-policy-secrets-manager"
+  name   = "${var.service_name}-iam-role-policy-secrets-manager"
   role   = aws_iam_role.code-build-iam-role.id
   policy = <<EOF
 {
@@ -101,7 +101,7 @@ EOF
 }
 
 resource "aws_iam_role_policy" "code-build-iam-role-policy-ecr" {
-  name   = "${local.SERVICE_NAME}-iam-role-policy-ecr"
+  name   = "${var.service_name}-iam-role-policy-ecr"
   role   = aws_iam_role.code-build-iam-role.id
   policy = <<EOF
 {
@@ -135,6 +135,6 @@ EOF
 }
 
 resource "aws_iam_instance_profile" "code-build-iam-instance-profile" {
-  name = "${local.SERVICE_NAME}-iam-instance-profile"
+  name = "${var.service_name}-iam-instance-profile"
   role = aws_iam_role.code-build-iam-role.id
 }

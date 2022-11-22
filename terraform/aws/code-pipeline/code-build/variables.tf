@@ -1,8 +1,4 @@
 locals {
-  config       = yamldecode(file("./config.yml"))
-  REGION       = local.config.REGION
-  SERVICE_NAME = local.config.SERVICE_NAME
-
   ACCOUNT_ID = data.aws_caller_identity.current.account_id
 }
 
@@ -12,4 +8,12 @@ data "aws_caller_identity" "current" {}
 variable "env" {
   description = "Depolyment environment"
   default     = "dev"
+}
+
+variable "service_name" {
+  description = "Terraform Service Name"
+}
+
+variable "region" {
+  description = "AWS Region"
 }

@@ -1,6 +1,6 @@
 resource "aws_codebuild_project" "code-build-codebuild-project" {
-  name         = "${local.SERVICE_NAME}-codebuild-project"
-  description  = "${local.SERVICE_NAME}-codebuild-project-description"
+  name         = "${var.service_name}-codebuild-project"
+  description  = "${var.service_name}-codebuild-project-description"
   service_role = aws_iam_role.code-build-iam-role.arn
 
   artifacts {
@@ -23,7 +23,7 @@ resource "aws_codebuild_project" "code-build-codebuild-project" {
   source_version = "master"
 
   tags = {
-    Name = "${local.SERVICE_NAME}-codebuild-project"
+    Name = "${var.service_name}-codebuild-project"
   }
 }
 
