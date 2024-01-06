@@ -35,7 +35,7 @@ resource "aws_iam_role_policy" "code-build-with-policy-document-iam-role-policy-
 resource "aws_iam_role_policy" "code-build-with-policy-document-iam-role-policy-iam" {
   name   = "${local.SERVICE_NAME}-iam-role-policy-iam"
   role   = aws_iam_role.code-build-with-policy-document-iam-role.id
-  policy = aws_iam_policy.code-build-with-policy-document-iam-policy-secrets-manager.policy
+  policy = aws_iam_policy.code-build-with-policy-document-iam-policy-iam.policy
 }
 
 resource "aws_iam_role_policy" "code-build-with-policy-document-iam-role-policy-secrets-manager" {
