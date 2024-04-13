@@ -31,8 +31,12 @@ override.tf.json
 
 # jetbrains ide settings file
 .idea
+.vscode
 
 
 .env
 *.pem
 backend.tf
+
+*.tfvars
+*.auto.tfvars
