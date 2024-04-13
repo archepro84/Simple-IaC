@@ -9,6 +9,7 @@ provider "aws" {
 }
 
 # NOTE: Helm 및 Kubectl Provider는 EKS Module이 배포된 이후 Enable 되어야 합니다.
+# docs: https://registry.terraform.io/providers/hashicorp/helm/latest
 #provider "helm" {
 #  kubernetes {
 #    host                   = module.eks.cluster_endpoint
